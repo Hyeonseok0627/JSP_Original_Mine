@@ -1,0 +1,65 @@
+
+
+<HTML 테이블 형식 내용>
+
+링크: https://aboooks.tistory.com/59
+
+
+<http 에러 코드에서 에러 확인법>
+
+"예외" 로 되어 있는 코드 부분이 에러부분
+
+해당 부분보고, 근본원인 부분을 보면 확인 가능
+
+[ex. 202~209페이지 에러 수정한 사례]
+
+202~209페이지에선 unitsInStock 값이 null이라 값이 없다는 것을 확인
+이것을 보고 값이 연동이 왜 안되는지 확인
+
+processAddProduct.jsp에선 unitsInStock이 문제없음을 확인
+
+-> addProdcut.jsp에서 unitsInStock 철자를 확인
+(ctrl+f 해서 unitsInStock 검색하여 해당 문자가 있는 지 확인
+없는 것을 확인하여 unitsInStock 이 부분이 들어갈 부분에서 점검 후 수정)
+
+
+<216 페이지 ~: mvn에서 파일 다운로드>
+
+구글에서 "mvn" 검색 -> 첫번째 사이트 접속 -> cos 검색 -> cos.jar(servelt거 다운) 다운로드
+
+-> 해당 파일을 복사해서 해당 프로젝트의 WEB-INF의 lib 폴더에 붙여넣기
+
+
+<다수 fileupload 시, 발생 에러>
+
+[fileupload02.jsp 실행 시, 페이지를 표시할 수 없습니다 관련 에러]
+
+업로드한 파일 용량이 여기에서 지정한 5*1024*1024를 초과해서 문제가 발생
+
+업로드 파일을 변경하거나 파일 용량 범위를 늘리면 해결
+
+
+<이미지 파일을 c드라이브 upload 폴더에서 불러와서 보이도록 하기 위한 설정>
+
+Servers 폴더 -> Tomcat 폴더 -> server.xml 파일 더블 클릭
+
+-> Source 창에서 154행에 해당 내용 삽입
+<Context docBase="C:/upload" path="/upload" reloadable="true" />
+
+[이미지가 안 나오는 에러]
+
+server.xml에서 실제 경로를 새로 입력한 부분 확인
+
+-> <Context docBase="C:/upload" path="/upload" reloadable="true" />
+이니, 여기에선 jsp에서 절대경로인 C:/upload 쓰지말고, 여기에 있는 실제경로(path값)인 "/upload"를 써줘야함 
+
+
+<오늘 집가서 할 것>
+
+upload 폴더를 c드라이브에 위치시켜서 실행해야함
+
+일반 jpg 폴더에도 이미지 파일을 위치시켜서 거기서 upload 하는 방식을 실행해보기
+
+6장의 연습문제 7번 풀기
+
+7장의 연습문제 풀기

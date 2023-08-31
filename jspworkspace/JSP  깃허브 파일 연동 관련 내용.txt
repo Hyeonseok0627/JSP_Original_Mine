@@ -1,0 +1,20 @@
+
+
+jsp(이클립스 EE) GITHUB 저장소 파일 클론 하는 방법
+
+window -> show view -> other -> GIT -> GIT repository -> clone 선택
+
+-> git url 선택 -> url에 github 프로젝트 코드 복붙 -> user: 깃허브 아이디 / password: 깃허브 토큰
+
+-> 저장소: 이클립스 저장소랑 같게 설정 -> 클론이 되서 깃허브 파일 가지고 옴
+
+
+불러온 파일의 jsp 톰캣 서버 등록 및 파일 해당 서버 연동하는 방법
+
+window -> preference -> server -> Runtime Environment -> apache-tomcat-9.071 선택하여 apply and close
+
+servers -> apache-tomcat-9.071 at localhost 등록(연결해줄 모든 서버를 add 해주기)
+
+-> 각 서버마다 마우스 오른버튼 클릭 -> properties -> Project Facets -> runtimes ->
+
+apache-tomcat-9.071 체크 후 apply 클릭

@@ -1,0 +1,177 @@
+
+
+<장바구니 페이지 만들기 할 때, web.xml 자동완성 설정법>
+web.xml을 생성 후 작성할 때는 servlet 버전별 자동완성 설정을 해야함
+
+web.xml 자동완성 설정.txt 파일에 있는 것을 복붙하면 됨
+
+여기서는 4.0버전을 쓰는 것이라
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+    version="4.0">
+
+이렇게 작성
+
+	
+	
+request : 웹 브라우저 -> 웹 서버 (데이터 흐름)
+ 
+response : 웹 서버 -> 웹 브라우저 (데이터 흐름)
+
+
+
+쿠키 정보 얻는 코드 작성 후 실행했을 때 나오는 데이터 중
+아래 내용은 세션 생성 시, 작성 안해도 자동 생성된 부분
+
+설정된 쿠키의 속성 이름 [ 2 ] : JSESSIONID
+설정된 쿠키의 속성 값 [ 2 ] : DB36F17BA7E39F1D9802B39E4D484696
+자동으로 세션이 만들어지면 해당 세션과 클라이언트가 요구하는 것과 일치한지 확인 차 자동생성된 것
+
+
+실무에선 jsp 파일에서 주석은 jsp 주석인 <%-- --%> 이것만 써야함
+
+왜냐하면 다른 일반 주석인 //, /**/ 이런 것은 workspace에서는 인식을 안하지만
+
+웹브라우저 개발자창(F12)의 소스코드에선 다 나타나므로 실무에선 jsp파일에선 jsp 주석만 사용하기
+
+
+jsp 파일 기본언어 설정법
+
+: window -> preference -> web -> CSS Files, HTML Files, JSP Files의 Encoding 부분을 UTF-8로 변경 후 APPLY하면 됨
+
+
+<Servers에 tomcat-config에 외부 파일 복붙할 때 로그인 페이지 작동이 안되는 에러>
+
+해결법 : 새로운 xml파일이 기존 톰캣서버와 연동이 풀려서 문제 발생
+
+tomcat Server at localhost 더블 클릭하여 xml연동 체크를 다시 하면 xml파일에 있던 로그인 패스워드 정보가 반영이 되어서 실행이 됨`
+
+
+<외부 jsp파일을 복붙하거나 깃허브에서 가져와서 서버 연동 시킨 후에도 x표시 뜰 때 해결법>
+
+: 해당 파일 들어가서 엔터쳐서 내용 변경 후 저장하면 사라짐
+
+(새롭게 들어오고 새로 변경 후 저장해야 이클립스가 인식을 하게되서...)
+
+
+<해당 에러 발생 시 해결법>
+타입 예외 보고
+
+메시지 /orderConfirmation.jsp (행: [1], 열: [2]) [Page directive]은(는) 유효하지 않은 속성을 가지고 있습니다: [impirt]
+
+설명 서버가, 해당 요청을 충족시키지 못하게 하는 예기치 않은 조건을 맞닥뜨렸습니다.
+
+예외
+
+org.apache.jasper.JasperException: /orderConfirmation.jsp (행: [1], 열: [2]) [Page directive]은(는) 유효하지 않은 속성을 가지고 있습니다: [impirt]
+	org.apache.jasper.compiler.DefaultErrorHandler.jspError(DefaultErrorHandler.java:41)
+	org.apache.jasper.compiler.ErrorDispatcher.dispatch(ErrorDispatcher.java:292)
+	org.apache.jasper.compiler.ErrorDispatcher.jspError(ErrorDispatcher.java:98)
+	org.apache.jasper.compiler.JspUtil.checkAttributes(JspUtil.java:208)
+	org.apache.jasper.compiler.Validator$DirectiveVisitor.visit(Validator.java:112)
+	org.apache.jasper.compiler.Node$PageDirective.accept(Node.java:579)
+	org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2384)
+	org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2436)
+	org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2442)
+	org.apache.jasper.compiler.Node$Root.accept(Node.java:470)
+	org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2384)
+	org.apache.jasper.compiler.Validator.validateDirectives(Validator.java:1829)
+	org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:204)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:392)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:368)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:352)
+	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:605)
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:399)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+비고 근본 원인(root cause)의 풀 스택 트레이스를, 서버 로그들에서 확인할 수 있습니다.
+
+: import가 안되서 나타나는 에러(오탈자 조심)
+
+
+<영수증 화면에서 배송일, 이름, 주소 등의 정보가 주문정보에서 입력한 값이 안 나오는 케이스>
+
+processShippingInfo.jsp에 있는 변수명이랑 orderConfirmation.jsp에서 연동이 안된다는 점 착안
+
+-> 22행 ~44행에 있는 "shipping_" 부분 오류가 나서 에러 발생한 것과
+
+
+<영수증 화면에서 영수증 글자부분만 파란색인 에러 발생>
+
+영수증 class에서 <div class="container col-8 alert alert-info">
+이걸 div로 닫아버려서 여기에만 적용이 된 것과
+
+제일 마지막까지 div로 다시 닫아주면 해결됨
+
+
+<주문완료 페이지에서 배송일이랑 주문번호가 나오지 않는 에러>
+
+: thankCustomer.jsp 에서 20행~34행 내용 중
+
+shipping_cartId
+
+shipping_shippingDate
+
+두 변수에서 오탈자가 발생해서 생김
+
+
+
+<MySQL>
+
+mysql 비밀번호 : 123456
+
+
+집가서 mysql 다운로드 받아서 실행시켜보기
+오라클 계정 필요(mysql도 오라클꺼)
+
+MYSQL에서는 입력할 때, ctrl+enter를 눌러야함
+
+
+
+CREATE DATABASE JSPBookDB; 입력하여 schema에 생성
+
+CREATE DATABASE WebMarketDB; 입력 후 ctrl+enter 누름
+
+-> SCHEMAS 새로고침 -> webmarketdb 객체 생성된
+
+-> Quary에 SQL.TXT 내용 복붙하거나
+
+-> 이전에 CREATE DATABASE WebMarketDB;이건 "--"로 해서 주석처리하고
+
+-> "번개표시" 누르면 일괄적으로 데이터가 테이블에 다 입력이 됨`
+
+-> 이후 Tables 새로고침하면 확인 가능
+
+SQL.TXT 내용은 이클립스->WebMarket 프로젝트 -> dao -> ProductRepository.java 내용을 데이터베이스로 넣은 것
+
+
+<데이터베이스 연동-JDBC API로 데이터베이스 접속하기 에러 발생>
+
+드라이버를 찾을 수 없다는 메시지 확인 후
+
+JSPBook 프로젝트 -> src -> WEB-INF -> lib 안에 
+
+mysql-connector-j-8.1.0.jar인 MySQL 드라이버가 빠졌으니 넣어준 후 실행하면 정상작동함
+
+
+
+
+<MySQL 테이블에 JSP에서 데이터 입력해서 넣기>
+
+MySQL jspbookdb jquary창 코드 입력 또는 Tables 생성 해놓기
+
+-> 예제 16-2처럼 jsp 파일 생성 후 insert01.jsp 실행
+
+-> Member 테이블에 데이터 삽입 성공
+
+-> mysql의 jspbookdb의 Tables 오른쪽 끝에 달력같은 표시를 누르면 새로 업데이트 된 표 내용을 볼 수 있음
+
+확인 완료
+
+테이블 데이터 삽입 시, ID는 고유의 값이므로 계속 변경해줘야 삽입이 됨(PASSWORD는 본인 MYSQL 비밀번호 입력)

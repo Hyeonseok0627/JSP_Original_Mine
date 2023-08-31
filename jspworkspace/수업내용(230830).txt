@@ -1,0 +1,88 @@
+
+
+깃허브 연동 시, 에러 해결법
+
+깃허브 파일을 pull했을 때 프로젝트마다 x 표시가 뜨는 경우
+
+: 연동하던 곳과 톰캣 서버가 맞지않아서 생긴 부분
+
+-> Servers를 새로 생성 -> 프로젝트별 오른 마우스 클릭 -> properties ->
+
+project Facets -> Runtimes 클릭 -> 새로 연결한 apache 서버 선택 후 apply 클릭 -> apply and close 클릭
+
+
+깃허브 파일 pull 했을 때 깃허브 자료의 톰캣 서버 버전이랑 불러와서 작업하는 이클립스 내 톰캣 서버 버전이 동일해야 프로젝트들이 서버에 연동되서
+
+웹브라우저에 출력되게 가능함
+
+그래서 예를 들어, 깃허브 파일의 톰캣 서버가 9.0이고, 파일을 받는 이클립스 내 톰캣 서버 버전이 9.071인 경우에는 연동이 안되므로 하나로 통일해야함
+
+통일할 때는 주로 받아오는 파일 톰캣 서버 버전으로 맞추는 게 좋음
+
+기존 톰캣 서버를 삭제하고, windows -> preferences -> servers : 기존 버전 삭제 후 새롭게 해당 버전 서버 생성 -> 하단에 서버 생성 및 프로젝트 연동 시킴
+
+-> 각  프로젝트별 오른 마우스 클릭 -> properties ->
+
+project Facets -> Runtimes 클릭 -> 새로 연결한 apache 서버 선택 후 apply 클릭 -> apply and close 클릭
+
+이러고, Servers 폴더 내 Tomcat Server at localhos-config 폴더 내 파일의 변경사항은 다시 리셋되니 점검
+
+그리고, .metadata -> .plugins -> org.eclipse.wst.server.core -> tmp0 -> work -> Catalina -> localhost -> 여기 프로젝트 폴더 들에 있는 컴파일링 하면 생기는 
+
+java, class 파일은 리셋되니 다시 생성 필요 
+
+<시큐리티 웹서버에 사용자와 역할 설정하기>
+
+Servers -> apache-tomcat-9.071 -> tomcat-users.xml -> 45행에 주석 풀기 ->
+
+password 를 변경
+
+해당 내용으로 변경
+  <user username="tomcat" password="tomcat1234" roles="tomcat"/>
+  <user username="both" password="both1234" roles="tomcat,role1"/>
+  <user username="role1" password="role1234" roles="role1"/>
+  
+web.xml 파일에서 
+ 해당 부분에 '/' 부분이 빠진 것 때문에 에러가 뜸
+ 
+			<form-login-config>
+				<form-login-page>/ch10/login.jsp</form-login-page>
+				<form-error-page>/ch10/login_failed.jsp</form-error-page>
+			</form-login-config>
+
+-> 밑에 있는 문구의 에러가 뜨게됨
+Starting Apache Tomcat v9.0 at localhost' has encountered a problem. 
+Server Apache Tomcat v9.0 at localhost failed to start.
+
+
+  
+  
+  
+집가서 깃허브로 풀 하기전에 톰캣서버가 학원이랑 다르므로 다시 새로 톰캣서버 생성 후 연결해야할듯
+
+그래서 우선 Servers 내용 구성을 집에 원래 것이랑 비교하여 그거대로 구성할 수 있도록 하기  
+
+
+
+Servers -> tomcat-users.xml -> 
+	
+주석처리 없애고 이렇게 수정
+
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <role rolename="admin" />
+  <user username="tomcat" password="tomcat1234" roles="tomcat"/>
+  <user username="both" password="both1234" roles="tomcat,role1"/>
+  <user username="role1" password="role1234" roles="role1"/>
+  <user username="admin" password="admin1234" roles="admin"/>
+  
+  
+  
+  getAttribute() 메소드는 return값이 object형임
+  -> 나중에 형변환 해줘야함
+  
+  getParameter() 메소드는 return값이  null로 string형임
+ 
+  관련 내용 링크 : https://spidyweb.tistory.com/18
+  
+  

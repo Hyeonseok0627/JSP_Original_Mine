@@ -1,0 +1,57 @@
+원본 주소
+https://linux.systemv.pe.kr/2017/11/web-xml-%EC%8A%A4%ED%82%A4%EB%A7%88-%EC%98%88%EC%A0%9C-%ED%97%A4%EB%8D%94/
+
+Servlet 2.5
+
+Servlet 2.5 스키마를 사용하는 web.xml 파일의 예제 헤더XHTML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+Servlet 3.0
+
+Servlet 3.0 스키마를 사용하는 web.xml 파일의 예제 헤더XHTML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+Servlet 3.1
+
+Servlet 3.1 스키마를 사용하는 web.xml 파일의 예제 헤더XHTML
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+Servlet 4.0
+
+Servlet 4.0 스키마를 사용하는 web.xml 파일의 예제 헤더XHTML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+    version="4.0">
+Servlet 5.0
+
+Servlet 5.0XHTML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+    version="5.0">
+ 
+    <!-- Config here. -->
+ 
+</web-app>
+Servlet 6.0
+
+Servlet 6.0XHTML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+    version="6.0">
+ 
+    <!-- Config here. -->
+ 
