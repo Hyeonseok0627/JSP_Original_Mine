@@ -151,8 +151,8 @@
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
-		<Context docBase="C:/upload" path="/upload" reloadable="true" />
-      <Context docBase="BookMarket" path="/BookMarket" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/><Context docBase="Exercise" path="/Exercise" reloadable="true" source="org.eclipse.jst.jee.server:Exercise"/><Context docBase="JSPBook" path="/JSPBook" reloadable="true" source="org.eclipse.jst.jee.server:JSPBook"/><Context docBase="WebMarket" path="/WebMarket" reloadable="true" source="org.eclipse.jst.jee.server:WebMarket"/><Context docBase="HelloJSP1" path="/HelloJSP1" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP1"/><Context docBase="HelloJSP2" path="/HelloJSP2" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP2"/><Context docBase="HelloJSP3" path="/HelloJSP3" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP3"/></Host>
+
+      <Context docBase="BookMarket" path="/BookMarket" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/><Context docBase="Exercise" path="/Exercise" reloadable="true" source="org.eclipse.jst.jee.server:Exercise"/><Context docBase="HelloJSP1" path="/HelloJSP1" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP1"/><Context docBase="HelloJSP2" path="/HelloJSP2" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP2"/><Context docBase="HelloJSP3" path="/HelloJSP3" reloadable="true" source="org.eclipse.jst.jee.server:HelloJSP3"/><Context docBase="JSPBook" path="/JSPBook" reloadable="true" source="org.eclipse.jst.jee.server:JSPBook"/><Context docBase="WebMarket" path="/WebMarket" reloadable="true" source="org.eclipse.jst.jee.server:WebMarket"/></Host>
     </Engine>
   </Service>
 </Server>
