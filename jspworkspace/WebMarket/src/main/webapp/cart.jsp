@@ -36,6 +36,7 @@
 			</table>
 		</div>
 		<div style="padding-top: 50px">
+			<%--hover: 마우스 올림 효과(마우스를 올려놓으면 어떤 효과나오도록 하는 부트스트랩) --%>
 			<table class="table table-hover">
 				<tr>
 					<th>상품</th>

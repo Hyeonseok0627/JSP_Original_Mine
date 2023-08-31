@@ -15,6 +15,7 @@
 		</div>
 	</div>
 	<div class="container">
+		<%--form-horizontal: 레이블과 폼 요소가 가로로  배열된 형태를 만들어주는 수평폼 선택자--%>
 		<form action="./processShippingInfo.jsp" class="form-horizontal" method="post">
 			<input type="hidden" name="cartId" value="<%=request.getParameter("cartId")%>" />
 			<div class="form-gruop row">

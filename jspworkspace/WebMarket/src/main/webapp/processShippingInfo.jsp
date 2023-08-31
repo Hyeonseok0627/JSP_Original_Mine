@@ -12,7 +12,7 @@
 	Cookie zipCode = new Cookie("Shipping_zipCode" , URLEncoder.encode(request.getParameter("zipCode"), "utf-8"));
 	Cookie addressName = new Cookie("Shipping_addressName" , URLEncoder.encode(request.getParameter("addressName"), "utf-8"));
 	
-	cartId.setMaxAge(24 * 60 * 60);
+	cartId.setMaxAge(24 * 60 * 60); //쿠키 유효기간 설정(해당 초 동안 쿠키가 유효함)
 	name.setMaxAge(24 * 60 * 60);
 	zipCode.setMaxAge(24 * 60 * 60);
 	country.setMaxAge(24 * 60 * 60);
@@ -25,5 +25,5 @@
 	response.addCookie(zipCode);
 	response.addCookie(addressName);
 	
-	response.sendRedirect("orderConfirmation.jsp"); //해당 페이지를 돌려주겠다는 의미
+	response.sendRedirect("orderConfirmation.jsp"); //해당 페이지를 돌려주겠다는 의미(해당 jsp로 이동하라고 웹 서버가 웹 브라우저에 명령)
 %>
