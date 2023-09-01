@@ -77,7 +77,7 @@
 		<table class="table table-hover">
 		<tr>
 			<th class="text-center">도서</th>
-			<th class="text-center">#</th>
+			<th class="text-center">수량</th>
 			<th class="text-center">가격</th>
 			<th class="text-center">소계</th>
 		</tr>
@@ -104,7 +104,7 @@
 			<td></td>
 			<td></td>
 			<td class="text-right"><strong>총액: </strong></td>
-			<td class="text-center text-danger"><strong><%=sum%></strong></td>
+			<td class="text-center text-danger"><strong><%=sum%>원</strong></td>
 		</tr>
 		</table>
 		

@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/mvc/controller/BoardController.java=EUC-KR
+encoding//src/main/java/mvc/model/BoardDAO.java=EUC-KR
 encoding//src/main/webapp/login_failed.jsp=UTF-8
 encoding//src/main/webapp/menu.jsp=UTF-8
 encoding/<project>=UTF-8

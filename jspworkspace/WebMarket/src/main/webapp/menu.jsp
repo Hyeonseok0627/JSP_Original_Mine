@@ -19,7 +19,7 @@
 							<li class="nav-item"><a class="nav-link" href="./editProduct.jsp?edit=delete">상품 삭제</a></li>
 							
 							<%--616 페이지 내용 추가 --%>
-							<li class="nav-item"><a class="nav-link" href="<c:url value="/BoardListAction.do?pageNum=1"/>">게시판</a></li>
+							<li class="nav-item"><a class="nav-link" href="./BoardListAction.do?pageNum=1">게시판</a></li>
 							
 				</ul>
 			</div>

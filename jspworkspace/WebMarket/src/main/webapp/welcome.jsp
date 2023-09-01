@@ -1,6 +1,6 @@
 <%--p97~100에서 변경한 내용 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%--p97~100에서 변경한 내용 --%>
 <%@ page import="java.util.Date" %>
@@ -10,7 +10,7 @@
 <head>
 
 <%--p97~100에서 변경한 내용 --%>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Welcome</title>
 <%--부트스트랩 활용 --%>
 <%--구글에서 부트스트랩 검색 -> 사이트 접속 후 해당 버전(4.0)(4.0버전으로 한 이유는 책 내용과 같게 하기위해 한 것이고, 개인적으로 쓸 때는 최신버전인 5.3으로 해도됨) 다운로드
