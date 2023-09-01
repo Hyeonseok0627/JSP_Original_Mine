@@ -1,0 +1,26 @@
+<%@page import="dto.Product"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+		request.setCharacterEncoding("UTF-8");
+		Product newProduct = new Product();
+		newProduct.setProductId(productId)
+		newProduct.setPname(pname)
+		newProduct.setUnitPrice(unitPrice)
+		newProduct.setDescription(description)
+		newProduct.setMenufacturer(menufacturer)
+		newProduct.setCategory(category)
+		newProduct.setUnitsInStock(unitsInStock)
+		newProduct.setCondition(condition)
+
+		String productId = request.getParameter("productId");
+	%>
+</body>
+</html>

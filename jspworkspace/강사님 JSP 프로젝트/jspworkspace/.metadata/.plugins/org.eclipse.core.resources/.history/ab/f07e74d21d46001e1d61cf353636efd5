@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+function checkAddProduct(){
+	var productId = document.getElementById("productId");
+	var name = document.getElementById("productId");
+	var productId = document.getElementById("productId");
+	var productId = document.getElementById("productId");
+}

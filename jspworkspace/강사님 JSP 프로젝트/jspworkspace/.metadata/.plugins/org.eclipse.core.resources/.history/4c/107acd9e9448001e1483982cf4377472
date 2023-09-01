@@ -1,0 +1,17 @@
+package ch18.com.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ControllerServlet extends HttpServlet{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4969246539398681007L;
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+}

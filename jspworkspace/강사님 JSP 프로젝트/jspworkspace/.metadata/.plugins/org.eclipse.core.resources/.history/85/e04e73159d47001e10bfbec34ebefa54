@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		Cookie[] cookies = request.getCookies();
+		out.println("현재 설정된 쿠키의 개수 =>" + cookies.length + "<br>");
+		out.println("================================<br>");
+		for(int i=0; i<cookies.length; i++){
+			out.println("설정된 쿠키의 속성 이름["+i+"] : " + cookies[i].getName() + "<br>");
+			out.println("설정된 쿠키의 속성 값["+i+"] : " + cookies[i].getValue() + "<br>");
+			out.println("----------------------------<br>");
+		}
+		
+		String user_id =request.getParameter("id");
+		String user_pw =request.getParameter("passwd");
+		
+		if(user_id.equals("admin") && user_pw.equals("1234")){
+			Cookie cookie_id = new Cookie("userID",user_id);
+			Cookie cookie_pw = new Cookie("userPW",user_pw);
+			response.addCookie(cookie_id);
+			response.addCookie(cookie_pw);
+			out.println("쿠키 생성이 성공했습니다.<br>");
+			out.println(user_id+"님 환영합니다.<br>");
+		}else{
+			out.println("쿠키 생성이 실패했습니다.");
+		}
+	%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

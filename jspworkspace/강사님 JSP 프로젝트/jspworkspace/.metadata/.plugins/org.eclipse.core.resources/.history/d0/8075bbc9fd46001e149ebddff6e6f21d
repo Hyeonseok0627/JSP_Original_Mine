@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4>---- 세션 유효 시간 변경 전 ----</h4>
+	<%
+		String session_id = session.getId();
+		long last_time = session.getLastAccessedTime();
+		long start_time = session.getCreationTime();
+		long used_time = (last_time-start_time)/60000;
+		int time = session.getMaxInactiveInterval() / 60;
+		out.println("세션 유효 시간 : " + time + "분<br>");
+	%>
+</body>
+</html>
+
+
+
+
+
+
+

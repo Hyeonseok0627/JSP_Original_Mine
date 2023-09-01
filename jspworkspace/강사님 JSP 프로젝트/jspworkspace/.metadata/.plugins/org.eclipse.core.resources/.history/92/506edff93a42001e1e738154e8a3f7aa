@@ -1,0 +1,54 @@
+package dao;
+
+import java.util.ArrayList;
+
+import dto.Book;
+
+public class BookRepository {
+	private ArrayList<Book> listOfBooks = new ArrayList<>();
+	
+	public BookRepository(){
+		Book html = new Book();
+		html.setBookId("1001");
+		html.setName("[Hello coding] HTML5+CSS3");
+		html.setUnitPrice(15000);
+		html.setAuthor("황재호");
+		html.setDescription("워드나 PPT 문서를 만들 수 있나요? 그러면 문제 없습니다. 지금 바로 웹페이지 제작에 도전해보세요. 지금 당장 컴퓨터가 없어도 괜찬습니다. 코드와 실행화면이 바로 보여서 눈으...");
+		html.setPublisher("한빛미디어");
+		html.setCategory(null);
+		html.setUnitsInStock(1000);
+		html.setTotalPages(1000);
+		html.setReleaseDate(null);
+		html.setCondition(null);
+		
+		Book java = new Book();
+		java.setBookId("1002");
+		java.setName("");
+		java.setUnitPrice(27000);
+		java.setAuthor("");
+		java.setDescription("");
+		java.setPublisher("");
+		java.setCategory("");
+		java.setUnitsInStock(1000);
+		java.setTotalPages(1000);
+		java.setReleaseDate("");
+		java.setCondition("");
+		
+		Book spring = new Book();
+		spring.setBookId("");
+		spring.setName("");
+		spring.setUnitPrice(null);
+		spring.setAuthor("");
+		spring.setDescription("");
+		spring.setPublisher("");
+		spring.setCategory("");
+		spring.setUnitsInStock(1000);
+		spring.setTotalPages(1000);
+		spring.setReleaseDate("");
+		spring.setCondition("");
+	}
+	
+	public ArrayList<Book> getAllBook(){
+		return listOfBooks;
+	}
+}

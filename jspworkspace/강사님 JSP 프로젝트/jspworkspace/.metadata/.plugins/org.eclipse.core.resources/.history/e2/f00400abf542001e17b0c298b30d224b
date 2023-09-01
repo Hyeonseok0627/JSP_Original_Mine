@@ -1,0 +1,23 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+		/* response.setIntHeader("Refresh", 1);  */
+		Calendar calendar = Calendar.getInstance(new Locale("ko"));
+		String str =
+				calendar.get(Calendar.HOUR_OF_DAY)
+				+":"+calendar.get(Calendar.MINUTE)
+				+":"+calendar.get(Calendar.SECOND)
+				+" "+calendar.get(Calendar.AM_PM==0?"AM":"PM");
+	%>
+	<p>현재 시간은 <%=str %></p>
+</body>
+</html>

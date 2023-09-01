@@ -1,0 +1,26 @@
+package dao;
+
+import java.util.ArrayList;
+
+import dto.Book;
+
+public class BookRepository {
+	private ArrayList<Book> listOfBooks = new ArrayList<>();
+	
+	public BookRepository(){
+		Book html = new Book();
+		html.setBookId(null);
+		html.setName(null);
+		html.setUnitPrice(null);
+		html.setAuthor(null);
+		html.setDescription(null);
+		html.setPublisher(null);
+		html.setCategory(null);
+		html.setUnitsInStock(0);
+		html.setTotalPages(0);
+		html.setReleaseDate(null);
+		html.setCondition(null);
+		Book java = new Book();
+		Book spring = new Book();
+	}
+}

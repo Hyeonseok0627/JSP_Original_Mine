@@ -1,0 +1,45 @@
+<%@page import="dto.Product"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+		request.setCharacterEncoding("UTF-8");
+		Product newProduct = new Product();
+		newProduct.setProductId(request.getParameter("productId"));
+		newProduct.setPname(request.getParameter("pname"));
+		
+		Integer price;
+		if(unitPrice.isEmpty()){
+			price = 0;
+		}else{
+			price = Integer.valueOf(unitPrice);
+		}
+		newProduct.setUnitPrice(price);
+		
+		newProduct.setDescription(request.getParameter("description"));
+		newProduct.setMenufacturer(request.getParameter("menufacturer"));
+		newProduct.setCategory(request.getParameter("category"));
+		String unitPrice = request.getParameter("unitPrice");
+		
+		String unitInStock = request.getParameter("unitsInStock")
+		long stock;
+		if(unitPrice.isEmpty()){
+			price = 0;
+		}else{
+			price = Integer.valueOf(unitPrice);
+		}
+		newProduct.setUnitPrice(price);
+		
+		newProduct.setUnitsInStock();
+		newProduct.setCondition(request.getParameter("condition"));
+
+		String productId = ;
+	%>
+</body>
+</html>

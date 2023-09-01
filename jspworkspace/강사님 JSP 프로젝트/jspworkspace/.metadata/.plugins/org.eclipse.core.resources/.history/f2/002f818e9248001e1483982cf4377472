@@ -1,0 +1,7 @@
+package ch18.com.model;
+
+public class LoginBean {
+	private String id;
+	private String password;
+	
+}

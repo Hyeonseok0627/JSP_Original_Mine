@@ -1,0 +1,54 @@
+package dao;
+
+import java.util.ArrayList;
+
+import dto.Book;
+
+public class BookRepository {
+	private ArrayList<Book> listOfBooks = new ArrayList<>();
+	
+	public BookRepository(){
+		Book html = new Book();
+		html.setBookId(null);
+		html.setName(null);
+		html.setUnitPrice(null);
+		html.setAuthor(null);
+		html.setDescription(null);
+		html.setPublisher(null);
+		html.setCategory(null);
+		html.setUnitsInStock(0);
+		html.setTotalPages(0);
+		html.setReleaseDate(null);
+		html.setCondition(null);
+		
+		Book java = new Book();
+		java.setBookId(null);
+		java.setName(null);
+		java.setUnitPrice(null);
+		java.setAuthor(null);
+		java.setDescription(null);
+		java.setPublisher(null);
+		java.setCategory(null);
+		java.setUnitsInStock(0);
+		java.setTotalPages(0);
+		java.setReleaseDate(null);
+		java.setCondition(null);
+		
+		Book spring = new Book();
+		spring.setBookId(null);
+		spring.setName(null);
+		spring.setUnitPrice(null);
+		spring.setAuthor(null);
+		spring.setDescription(null);
+		spring.setPublisher(null);
+		spring.setCategory(null);
+		spring.setUnitsInStock(0);
+		spring.setTotalPages(0);
+		spring.setReleaseDate(null);
+		spring.setCondition(null);
+	}
+	
+	public ArrayList<Book> getAllBook(){
+		return listOfBooks;
+	}
+}
