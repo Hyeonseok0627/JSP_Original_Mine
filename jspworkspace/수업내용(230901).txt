@@ -1,0 +1,198 @@
+
+
+<JSP(자바문법)를 활용하여 MySQL 데이터를 불러와서 웹브라우저에 출력,
+데이터베이스 저장된 값 수정하는 방법을 배움>
+
+MySQL에 저장된 테이블값의 아이디 중에서 수정할 것을 선택하여
+"이름"값을 변경한 후 전송 누르면 원래 테이블 데이터 중 "이름"값이 변경됨
+(MySQL에서 확인 가능)
+
+
+<Statement>
+: 자바에서 쿼리문을 사용할 때 java.sql 패키지에 있는 Statement를 사용
+Statement는 SQL문을 실행할 때 사용하는 인터페이스
+
+관련 자료 링크:
+https://jaehoney.tistory.com/179
+
+https://velog.io/@dingdoooo/JDBC-Statement-PreparedStatement-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0
+
+
+<input 태그의 placeholder 속성>
+: <input> 태그의 placeholder 속성은 입력 필드에 사용자가 적절한 값을 입력할 수 있도록 도와주는 짧은 도움말을 명시
+
+관련 자료 링크:
+http://www.tcpschool.com/html-tag-attrs/input-placeholder
+
+
+<insert, update, delete 쿼리문은 모두 executeUpdate() 이걸 사용>
+
+
+jsp의 최상단 자동으로 생성되는 페이지 내용은 연동되는 모든 jsp파일이 동일해야함(그래야 에러가 안뜸)
+
+
+<WebMarket 프로젝트 작성-데이터베이스 연동>
+
+: WEB-INF -> web.xml 파일에서 16행에 
+
+			<url-pattern>/editProduct.jsp</url-pattern> 
+			
+			해당 내용 추가
+			
+			
+<String형 데이터는 줄이 넘어가는 때에는 '+' 해주고 이러기 위해서는
+아래처럼 "" 단위로 줄마다 만들어주고 써주기 (변수 철자가 중간에 끊어져서 다음 행으로 넘어가면 에러 발생함)>
+			
+					if (fileName != null) {
+			sql = "UPDATE product SET p_name=?, p_unitPrice=?,"+
+			"p_description=?,p_manufacturer=?, p_category=?, p_unitsInStock=?,"+
+					"p_condition=?, p_fileName=? WHERE p_id=?";
+					
+					이렇게 작성해줘야함
+					
+					
+<상품 수정 페이지 결과 페이지 에러1 발생>
+					
+(오류 페이지 내용)	
+타입 예외 보고
+
+메시지 행 [14]에서 [/processUpdateProduct.jsp]을(를) 처리하는 중 예외 발생
+
+설명 서버가, 해당 요청을 충족시키지 못하게 하는 예기치 않은 조건을 맞닥뜨렸습니다.
+
+예외
+
+java.io.IOException: 행 [14]에서 [/processUpdateProduct.jsp]을(를) 처리하는 중 예외 발생
+
+11: 	String encType = "utf-8"; //인코딩 유형
+12: 	int maxSize = 5 * 1024 * 1024; //최대 업로드될 파일의 크기 5MB
+13: 	
+14: 	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+15: 	String productId = multi.getParameter("productId");
+16: 	String name = multi.getParameter("name");
+17: 	String unitPrice = multi.getParameter("unitPrice");
+
+
+Stacktrace:
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:494)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+근본 원인 (root cause)
+
+java.io.IOException: Posted content type isn't multipart/form-data
+	com.oreilly.servlet.multipart.MultipartParser.<init>(MultipartParser.java:166)
+	com.oreilly.servlet.MultipartRequest.<init>(MultipartRequest.java:222)
+	org.apache.jsp.processUpdateProduct_jsp._jspService(processUpdateProduct_jsp.java:161)
+	org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:466)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+비고 근본 원인(root cause)의 풀 스택 트레이스를, 서버 로그들에서 확인할 수 있습니다.
+
+: form-data형식이 아니라고 한 것이라
+updateProduct.jsp에서 오탈자 찾아서 해결
+
+		<form name="newProduct" action="./processUpdateProduct.jsp" 
+			class="form-horizontal" method="post" 
+			enctype="multipart/form-data">
+			
+mulipart -> multipart로 변경 후 해결
+
+
+<상품 수정 페이지 결과 페이지 에러2 발생>
+
+(processUpdateProduct.jsp)에서 9번 파라미터를 찾는 에러
+
+: sql = ~ 이 부분에서 데이터 적혀있는거랑 밑에 각각 선언한 것과 순서와 종류가 같아야함
+
+	if (rs.next()) {
+		if (fileName != null) {
+			sql = "UPDATE product SET p_name=?, p_unitPrice=?,"+
+			"p_description=?,p_manufacturer=?, p_category=?, p_unitsInStock=?,"+
+					"p_condition=?, p_fileName=? WHERE p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, price);
+			pstmt.setString(3, description);
+			pstmt.setString(4, category);
+			pstmt.setString(5, manufacturer);
+			pstmt.setLong(6, stock);
+			pstmt.setString(7, condition);
+			pstmt.setString(8, fileName);
+			pstmt.setString(9, productId);
+			pstmt.executeUpdate();
+			
+여기에서 sql에서 파일 종류를 하나 더 선언해버려서 그것 수정 후 에러 해결
+
+
+<18장 실습 때>
+<JSPBook 프로젝트 내 WEB-INF -> web.xml 파일에 자동완성 내용 추가하기>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	
+	
+<18장 내용>
+
+controller 생성을 위해 web.xml에 다음 내용 추가
+
+		<servlet>
+			<servlet-name>myController</servlet-name>
+			<servlet-class>ch18.com.controller.ControllerServlet</servlet-class></servlet>
+			
+		<servlet-mapping>
+			<servlet-name>myController</servlet-name>
+			<url-pattern>ch18/ControllerServlet</url-pattern></servlet-mapping>
+			
+			
+<서버 자체가 작동하지 않는 에러 발생-610~614 페이지>
+			
+해결법: web.xml 문제
+			
+-> 		<servlet-mapping>
+			<servlet-name>myController</servlet-name>
+			<url-pattern>/ch18/ControllerServlet</url-pattern>
+		</servlet-mapping>
+
+: 이 부분에 ch18 앞에 '/' 를 넣어주지 않아서 에러 발생
+
+: 해당 mapping 부분은 주소창 쪽이라 <url-pattern> 이 부분이 JSPBook(프로젝트명)이 오는데
+이거 다음에 '/'를 안해주면 주소를 JSPBookch18로 인식해서 전혀 다른 객체로 인식이 되는 에러발생		
+
+
+시험범위는 11,12,17,18장은 제외
+
+집가서 18장 웹 마켓 내용 해보기
+
+
+
+<삭제 기능 에러>
+
+: removeCart.jsp 에 해당 내용 삭제하면 해결법
+	
+	
+	ProductRepository dao = ProductRepository.getInstance();
+
+	Product product = dao.getProductById(id);
+	if (product == null) {
+		response.sendRedirect("exceptionNoProductId.jsp");
+	}  
+: 해당 부분은 세션에 있는 데이터를 데이터베이스의 데이터와 일치하는지를 따지는 것이라 있어도 되고, 없어도 되는데
+해당 부분은 MySQL로 하기전것이라 MySQL연동 시에는 해당 코드는 삭제해야 삭제기능이 작동됨(에러가 안뜸)
+
+해당 기능을 굳이 넣을거면 데이터베이스와 연동 시 바꾼 방법으로 코드를 작성하면 됨
+	
+
+<type이 여러개라는 에러>
+
+:각 jsp페이지마다의 <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 이게 통일이 되어야하고, 하나가 utf-8이 소문자로 되어있어서 에러가 남(대문자 소문자도 구분해야함)
+
+
+집에서 product3, addcart3으로 내용 변경하여 다시 작동시켜보기	

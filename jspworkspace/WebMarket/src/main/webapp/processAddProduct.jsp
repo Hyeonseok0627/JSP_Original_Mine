@@ -3,8 +3,13 @@
 <%@ page import="com.oreilly.servlet.*" %>
 <%@ page import="com.oreilly.servlet.multipart.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="dto.Product" %>
-<%@ page import="dao.ProductRepository" %>
+
+<%--556 페이지 내용 추가 --%>
+<%@ page import="java.sql.*" %>
+<%@ include file="dbconn.jsp" %>
+
+<%-- <%@ page import="dto.Product" %>
+<%@ page import="dao.ProductRepository" %> : 556 페이지로 내용 삭제--%>
 
 <% request.setCharacterEncoding("UTF-8");
 
@@ -53,7 +58,32 @@
 	String fname = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fname);
 	
-	ProductRepository dao = ProductRepository.getInstance();
+	PreparedStatement pstmt = null;
+	
+	String sql = "insert into product value(?,?,?,?,?,?,?,?,?)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, productId);
+	pstmt.setString(2, name);
+	pstmt.setInt(3, price);
+	pstmt.setString(4, description);
+	pstmt.setString(5, category);
+	pstmt.setString(6, manufacturer);
+	pstmt.setLong(7, stock);
+	pstmt.setString(8, condition);
+	pstmt.setString(9, fileName);
+	pstmt.executeUpdate();
+	
+	if (pstmt != null)
+		pstmt.close();
+	if (conn != null)
+		conn.close();
+	
+	response.sendRedirect("products.jsp");
+	
+%>
+<%--61행~81행까지 556 페이지 내용으로 추가한 부분 --%>
+		
+	<%-- ProductRepository dao = ProductRepository.getInstance();
 		
 	Product newProduct = new Product();
 	newProduct.setProductId(productId);
@@ -70,4 +100,4 @@
 	dao.addProduct(newProduct);
 	
 	response.sendRedirect("products.jsp");
-%>    
+%> : 556 페이지로 내용 삭제--%>    
