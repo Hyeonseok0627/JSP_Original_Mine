@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 	<nav class = "navbar navbar-expand navbar-dark bg-dark">
 		<div class = "container">
 			<div class = "navbar-header">
@@ -7,7 +7,7 @@
 			</div>
 			<div>
 				<ul class="navbar-nav mr-auto">
-							<li class="nav-item"><a class="nav-link" href="./books.jsp">µµº≠ ∏Ò∑œ</a></li>
+							<li class="nav-item"><a class="nav-link" href="./books.jsp">ÎèÑÏÑú Î™©Î°ù</a></li>
 				</ul>
 			</div>
 		</div>

@@ -1,19 +1,19 @@
-<%--¹Ø¿¡ ÀÖ´Â °Ç µð·ºÆ¼ºê ÅÂ±× Á¾·ù
-ÅÂ±× ¾È¿¡ ³»¿ë ÀÛ¼º¹ýÀº html ÀÛ¼º¹ýÀÎ ¼Ó¼ºÁ¾·ù="ÀÌ¸§" ÀÌ·± ¹æ½ÄÀ¸·Î ÀÛ¼ºÇÏ°í ÇÑ Ä­ ¶ç¿ì°í ´ÙÀ½ ³»¿ë Ãß°¡ÀÛ¼º --%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%--ë°‘ì— ìžˆëŠ” ê±´ ë””ë ‰í‹°ë¸Œ íƒœê·¸ ì¢…ë¥˜
+íƒœê·¸ ì•ˆì— ë‚´ìš© ìž‘ì„±ë²•ì€ html ìž‘ì„±ë²•ì¸ ì†ì„±ì¢…ë¥˜="ì´ë¦„" ì´ëŸ° ë°©ì‹ìœ¼ë¡œ ìž‘ì„±í•˜ê³  í•œ ì¹¸ ë„ìš°ê³  ë‹¤ìŒ ë‚´ìš© ì¶”ê°€ìž‘ì„± --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Welcome</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
-<%--<!-- -->ÇØ´ç ÁÖ¼®¹®Àº À¥ ºê¶ó¿ìÀú F12Å° ¼Ò½º ÄÚµå¿¡¼­´Â ³ªÅ¸³²--%>
-<%-- ±×·¸±â ¶§¹®¿¡ jsp¿¡¼­´Â jsp ÁÖ¼®¹®À» »ç¿ëÇØÁà¾ßÇÔ--%>
+<%--<!-- -->í•´ë‹¹ ì£¼ì„ë¬¸ì€ ì›¹ ë¸Œë¼ìš°ì € F12í‚¤ ì†ŒìŠ¤ ì½”ë“œì—ì„œëŠ” ë‚˜íƒ€ë‚¨--%>
+<%-- ê·¸ë ‡ê¸° ë•Œë¬¸ì— jspì—ì„œëŠ” jsp ì£¼ì„ë¬¸ì„ ì‚¬ìš©í•´ì¤˜ì•¼í•¨--%>
 <!-- 	<nav class = "navbar navbar-expand navbar-dark bg-dark">
 		<div class = "container">
 			<div class = "navbar-header">
@@ -23,7 +23,7 @@
 	</nav> -->
 <%@ include file = "menu.jsp" %>
 <%!
-	String greeting = "µµ¼­ À¥ ¼îÇÎ¸ô";
+	String greeting = "ë„ì„œ ì›¹ ì‡¼í•‘ëª°";
 	String tagline = "Welcome to Web Market!";
 %>
 
@@ -41,7 +41,7 @@
 				<%= tagline %>
 			</h3>
 			<%
-				response.setIntHeader("Refresh" , 1); //176ÆäÀÌÁö ³»¿ë Ãß°¡ÇÑ ºÎºÐ
+				response.setIntHeader("Refresh" , 1); //176íŽ˜ì´ì§€ ë‚´ìš© ì¶”ê°€í•œ ë¶€ë¶„
 				Date day = new java.util.Date();
 				String am_pm;
 				int hour = day.getHours();
@@ -54,7 +54,7 @@
 					hour = hour - 12;
 				}
 				String CT =  hour + ":" + minute + ":" + second + " " + am_pm;
-				out.println("ÇöÀç Á¢¼Ó ½Ã°¢: " + CT + "\n");
+				out.println("í˜„ìž¬ ì ‘ì† ì‹œê°: " + CT + "\n");
 			%>
 			<hr>
 		</div>

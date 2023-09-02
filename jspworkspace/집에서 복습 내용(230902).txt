@@ -1,0 +1,20 @@
+
+
+
+<파일업로드 오류 Posted content type isn't multipart/form-data>
+
+해결법:
+관련링크로 확인
+:
+https://all-record.tistory.com/126
+
+
+<MySQL 데이터베이스 데이터를 테이블에 삽입 시, 에러 발생>
+
+MySQL Column count doesn't match value count at row 1 에러 해결방법
+
+: Col갯수와 입력하려는 데이터 갯수 불일치로 에러 발생
+
+관련 자료 링크:
+https://wakestand.tistory.com/m/467
+
