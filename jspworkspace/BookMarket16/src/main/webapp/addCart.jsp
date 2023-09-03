@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Book"%>
 <%@ page import="dao.BookRepository"%>
@@ -10,38 +11,38 @@
 		return;
 	}
 
-	pstmt = null;
-	rs = null;
+	PreparedStatement pst = null;
+	ResultSet rt = null;
 	
 	String sql = "SELECT * FROM book WHERE b_id = ?";
-	pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1,id);
-	rs = pstmt.executeQuery();
+	pst = conn.prepareStatement(sql);
+	pst.setString(1,id);
+	rt = pst.executeQuery();
 	
-	if(!rs.next()){
+	if(!rt.next()){
 		response.sendRedirect("excpetionNoBookId.jsp");
 	}
 	
 	sql = "SELECT * FROM book";
-	pstmt = conn.prepareStatement(sql);
-	rs = pstmt.executeQuery();
+	pst = conn.prepareStatement(sql);
+	rt = pst.executeQuery();
 	
 	ArrayList<Book> goodsList = new ArrayList<Book>();
 	
-	while(rs.next()){
+	while(rt.next()){
 		Book book = new Book();
-/* 		Book.setBookId(rs.getString("b_id"));
-		Book.setPname(rs.getString("b_name"));
-		Book.setUnitPrice(rs.getInt("b_unitPrice"));
-		Book.setAuthor(rs.getString("b_author"));
-		Book.setDescription(rs.getString("b_description"));
-		Book.setPublisher(rs.getString("b_publisher"));
-		Book.setCategory(rs.getString("b_category"));
-		Book.setUnitsInStock(rs.getLong("b_unitsInStock"));
-		Book.setTotalPages(rs.getLong("b_totalPages"));
-		Book.setReleaseDate(rs.getString("b_releaseDate"));
-		Book.setCondition(rs.getString("b_condition"));
-		Book.setFilename(rs.getString("b_fileName")); */
+/* 		Book.setBookId(rt.getString("b_id"));
+		Book.setPname(rt.getString("b_name"));
+		Book.setUnitPrice(rt.getInt("b_unitPrice"));
+		Book.setAuthor(rt.getString("b_author"));
+		Book.setDescription(rt.getString("b_description"));
+		Book.setPublisher(rt.getString("b_publisher"));
+		Book.setCategory(rt.getString("b_category"));
+		Book.setUnitsInStock(rt.getLong("b_unitsInStock"));
+		Book.setTotalPages(rt.getLong("b_totalPages"));
+		Book.setReleaseDate(rt.getString("b_releaseDate"));
+		Book.setCondition(rt.getString("b_condition"));
+		Book.setFilename(rt.getString("b_fileName")); */
 		goodsList.add(book);
 	}
 	

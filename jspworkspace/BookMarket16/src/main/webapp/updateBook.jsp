@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <html>
 <head>
@@ -16,16 +17,19 @@
 	<%
 		String bookId = request.getParameter("id");
 
+ 		PreparedStatement pst = null;
+		ResultSet rt = null; 
+		
 		String sql = "select * from book where b_id = ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, bookId);
-		rs = pstmt.executeQuery();
-		if (rs.next()) {
+		pst = conn.prepareStatement(sql);
+		pst.setString(1, bookId);
+		rt = pst.executeQuery();
+		if (rt.next()) {
 	%>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
-				<img src="/upload/<%=rs.getString("b_filename")%>" alt="image"
+				<img src="/upload/<%=rt.getString("b_filename")%>" alt="image"
 					style="width: 100%" />
 			</div>
 			<div class="col-md-7">
@@ -35,70 +39,70 @@
 						<label class="col-sm-2">도서 코드</label>
 						<div class="col-sm-3">
 							<input type="text" id="bookId" name="bookId"
-								class="form-control" value='<%=rs.getString("b_id")%>'>
+								class="form-control" value='<%=rt.getString("b_id")%>'>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">도서명</label>
 						<div class="col-sm-3">
 							<input type="text" id="name" name="name" class="form-control"
-								value="<%=rs.getString("b_name")%>">
+								value="<%=rt.getString("b_name")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">가격</label>
 						<div class="col-sm-3">
 							<input type="text" id="unitPrice" name="unitPrice"
-								class="form-control" value="<%=rs.getInt("b_unitPrice")%>">
+								class="form-control" value="<%=rt.getInt("b_unitPrice")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">저자</label>
 						<div class="col-sm-3">
 							<input type="text" name="author" class="form-control"
-								value="<%=rs.getString("b_author")%>">
+								value="<%=rt.getString("b_author")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">출판사</label>
 						<div class="col-sm-3">
 							<input type="text" name="publisher" class="form-control"
-								value="<%=rs.getString("b_publisher")%>">
+								value="<%=rt.getString("b_publisher")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">출판일</label>
 						<div class="col-sm-3">
 							<input type="text" name="releaseDate"
-								class="form-control" value="<%=rs.getLong("b_unitsInStock")%>">
+								class="form-control" value="<%=rt.getLong("b_unitsInStock")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">총 페이지 수</label>
 						<div class="col-sm-3">
 							<input type="text" name="totalPages"
-								class="form-control" value="<%=rs.getLong("b_totalPages")%>">
+								class="form-control" value="<%=rt.getLong("b_totalPages")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">상세 설명</label>
 						<div class="col-sm-3">
 							<input type="text" name="description"
-								cols="50" rows="2" class="form-control" value="<%=rs.getLong("b_description")%>">
+								cols="50" rows="2" class="form-control" value="<%=rt.getLong("b_description")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">분류</label>
 						<div class="col-sm-3">
 							<input type="text" name="category"
-								class="form-control" value="<%=rs.getLong("b_category")%>">
+								class="form-control" value="<%=rt.getLong("b_category")%>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2">재고 수</label>
 						<div class="col-sm-3">
 							<input type="text" name="unitsInStock"
-								class="form-control" value="<%=rs.getLong("b_unitInStock")%>">
+								class="form-control" value="<%=rt.getLong("b_unitInStock")%>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -127,10 +131,10 @@
 	</div>
 	<%
 		}
-		if (rs != null)
-			rs.close();
- 		if (pstmt != null)
- 			pstmt.close();
+		if (rt != null)
+			rt.close();
+ 		if (pst != null)
+ 			pst.close();
  		if (conn != null)
 			conn.close();
  	%>

@@ -13,26 +13,6 @@ public class BookRepository {
 		return instance;
 	}
 	
-	public ArrayList<Book> getAllBooks(){	
-		return listOfBooks;
-	}
-	
-	public Book getBookById(String bookId) {
-		Book bookById = null;
-		
-		for(int i=0; i<listOfBooks.size(); i++) {
-			Book book = listOfBooks.get(i);
-			if(book != null && book.getBookId() != null
-				&& book.getBookId().equals(bookId)){
-				bookById = book;
-					break;
-				}
-		}
-		
-		return bookById;
-		
-	}	
-	
 	public BookRepository() {
 		
 		Book book_A = new Book("A1", "HTML5+CSS3", 22500);
@@ -72,6 +52,26 @@ public class BookRepository {
 		listOfBooks.add(book_B);
 		listOfBooks.add(book_C);		
 	}
+	
+	public ArrayList<Book> getAllBooks(){	
+		return listOfBooks;
+	}
+	
+	public Book getBookById(String bookId) {
+		Book bookById = null;
+		
+		for(int i=0; i<listOfBooks.size(); i++) {
+			Book book = listOfBooks.get(i);
+			if(book != null && book.getBookId() != null
+				&& book.getBookId().equals(bookId)){
+				bookById = book;
+					break;
+				}
+		}
+		
+		return bookById;
+		
+	}	
 	
 	public void addBook(Book book) {
 		listOfBooks.add(book);

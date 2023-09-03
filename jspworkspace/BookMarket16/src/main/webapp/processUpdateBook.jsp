@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html; charset=UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="com.oreilly.servlet.*"%>
 <%@ page import="com.oreilly.servlet.multipart.*"%>
 <%@ page import="java.util.*"%>
@@ -47,50 +48,52 @@
 	String fname = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fname);	
 
-	
+ 		PreparedStatement pst = null;
+		ResultSet rt = null;
+		
 		String sql = "select * from book where b_id = ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, bookId);
-		rs = pstmt.executeQuery();
+		pst = conn.prepareStatement(sql);
+		pst.setString(1, bookId);
+		rt = pst.executeQuery();
 
-		if (rs.next()) {
+		if (rt.next()) {
 			if (fileName != null) {
 				sql = "UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitsInStock=?, b_totalPages b_releaseDate b_condition=?, b_fileName=? WHERE b_id=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, name);
-				pstmt.setInt(2, price);
-				pstmt.setString(3, author);
-				pstmt.setString(4, description);
-				pstmt.setString(5, publisher);
-				pstmt.setString(6, category);
-				pstmt.setLong(7, stock);
-				pstmt.setLong(8, total_Pages);
-				pstmt.setString(9, releaseDate);
-				pstmt.setString(10, condition);
-				pstmt.setString(11, fileName);
-				pstmt.setString(12, bookId);
-				pstmt.executeUpdate();
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, name);
+				pst.setInt(2, price);
+				pst.setString(3, author);
+				pst.setString(4, description);
+				pst.setString(5, publisher);
+				pst.setString(6, category);
+				pst.setLong(7, stock);
+				pst.setLong(8, total_Pages);
+				pst.setString(9, releaseDate);
+				pst.setString(10, condition);
+				pst.setString(11, fileName);
+				pst.setString(12, bookId);
+				pst.executeUpdate();
 			} else {
 				sql = "UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitsInStock=?, b_totalPages b_releaseDate b_condition=?, WHERE b_id=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, name);
-				pstmt.setInt(2, price);
-				pstmt.setString(3, author);
-				pstmt.setString(4, description);
-				pstmt.setString(5, publisher);
-				pstmt.setString(6, category);
-				pstmt.setLong(7, stock);
-				pstmt.setLong(8, total_Pages);
-				pstmt.setString(9, releaseDate);
-				pstmt.setString(10, condition);
-				pstmt.setString(11, bookId);
-				pstmt.executeUpdate();
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, name);
+				pst.setInt(2, price);
+				pst.setString(3, author);
+				pst.setString(4, description);
+				pst.setString(5, publisher);
+				pst.setString(6, category);
+				pst.setLong(7, stock);
+				pst.setLong(8, total_Pages);
+				pst.setString(9, releaseDate);
+				pst.setString(10, condition);
+				pst.setString(11, bookId);
+				pst.executeUpdate();
 			}
 		}
-	if (rs != null)
-		rs.close();
- 	if (pstmt != null)
- 		pstmt.close();
+	if (rt != null)
+		rt.close();
+ 	if (pst != null)
+ 		pst.close();
  	if (conn != null)
 		conn.close();
 

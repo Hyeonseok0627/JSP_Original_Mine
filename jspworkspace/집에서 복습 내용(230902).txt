@@ -18,3 +18,10 @@ MySQL Column count doesn't match value count at row 1 에러 해결방법
 관련 자료 링크:
 https://wakestand.tistory.com/m/467
 
+
+<duplicate local variable 에러 발생>
+
+include하는 jsp 페이지와 include 되는 jsp 페이지간에 쓰는 변수명이 동일해서 충돌발생
+
+해결법: BookMarket 에서 해당 문제는 dbconn.jsp에서 PreparedStatement pst, ResultSet rt 변수를 선언하지 않는 것으로 해결
+

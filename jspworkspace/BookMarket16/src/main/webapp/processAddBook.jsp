@@ -50,24 +50,26 @@ Enumeration files = multi.getFileNames();
 String fname = (String) files.nextElement();
 String fileName = multi.getFilesystemName(fname);
 
-String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?,?)";
-pstmt = conn.prepareStatement(sql);
-pstmt.setString(1, bookId);
-pstmt.setString(2, name);
-pstmt.setInt(3, price);
-pstmt.setString(4, author);
-pstmt.setString(5, description);
-pstmt.setString(6, publisher);
-pstmt.setString(7, category);
-pstmt.setLong(8, stock);
-pstmt.setLong(9, total_Pages);
-pstmt.setString(10, releaseDate);
-pstmt.setString(11, condition);
-pstmt.setString(12, fileName);
-pstmt.executeUpdate();
+PreparedStatement pst = null; 
 
-if (pstmt != null)
-	pstmt.close();
+String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?,?)";
+pst = conn.prepareStatement(sql);
+pst.setString(1, bookId);
+pst.setString(2, name);
+pst.setInt(3, price);
+pst.setString(4, author);
+pst.setString(5, description);
+pst.setString(6, publisher);
+pst.setString(7, category);
+pst.setLong(8, stock);
+pst.setLong(9, total_Pages);
+pst.setString(10, releaseDate);
+pst.setString(11, condition);
+pst.setString(12, fileName);
+pst.executeUpdate();
+
+if (pst != null)
+	pst.close();
 if (conn != null)
 	conn.close();
 

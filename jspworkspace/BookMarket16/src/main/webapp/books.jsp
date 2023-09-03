@@ -19,31 +19,34 @@
 		<div class="row" align="center">
 		<%@ include file="dbconn.jsp"%>
 			<%
+				PreparedStatement pst = null;
+				ResultSet rt = null;
+				
 				String sql = "select * from book";
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
+				pst = conn.prepareStatement(sql);
+				rt = pst.executeQuery();
+				while (rt.next()) {
 			%>
 		<div class="row" align="left">
 			<div class="col-md-2">
-				<img src ="/upload/<%=rs.getString("b_fileName")%>" style ="width: 100%">
+				<img src ="/upload/<%=rt.getString("b_fileName")%>" style ="width: 100%">
 			</div>
 			<div class="col-md-8" >
-				<h3>[<%=rs.getString("b_category") %>] <%=rs.getString("b_name") %></h3>
-				<p><%=rs.getString("b_description") %>
-				<p><%=rs.getString("b_author")%> | <%=rs.getString("b_publisher") %> | <%=rs.getString("b_unitPrice") %>원
+				<h3>[<%=rt.getString("b_category") %>] <%=rt.getString("b_name") %></h3>
+				<p><%=rt.getString("b_description") %>
+				<p><%=rt.getString("b_author")%> | <%=rt.getString("b_publisher") %> | <%=rt.getString("b_unitPrice") %>원
 			</div>
 			<div class="col-md-2 align-self-center">
-				<p><a href="./book.jsp?id=<%=rs.getString("b_id") %>"
+				<p><a href="./book.jsp?id=<%=rt.getString("b_id") %>"
 				class="btn btn-secondary" role="button">상세 정보 &raquo;</a>
 			</div>
 			<%
 				}
 				
-			if (rs != null)
-				rs.close();
- 			if (pstmt != null)
- 				pstmt.close();
+			if (rt != null)
+				rt.close();
+ 			if (pst != null)
+ 				pst.close();
  			if (conn != null)
 				conn.close();
 			%>	
