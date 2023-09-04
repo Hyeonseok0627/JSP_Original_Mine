@@ -47,10 +47,12 @@
   <role rolename="role1"/>
   <role rolename="admin" />
   <role rolename="guest" />
+  <role rolename="guest1" />
   <user username="tomcat" password="tomcat1234" roles="tomcat"/>
   <user username="both" password="both1234" roles="tomcat,role1"/>
   <user username="role1" password="role1234" roles="role1"/>
   <user username="admin" password="admin1234" roles="admin"/>
   <user username="guest" password="guest1234" roles="guest"/>
+  <user username="guest1" password="guest123" roles="guest1"/>
 
 </tomcat-users>
