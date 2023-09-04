@@ -1,0 +1,1 @@
+bookSELECT * FROM bookmarketdb.book;
