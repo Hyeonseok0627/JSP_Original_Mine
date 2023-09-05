@@ -1,0 +1,7 @@
+<깃허브 연동 시, 필요한 Password>
+
+자바, JSP 관련 깃허브 토큰
+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
+
+스프링 레거시 관련 깃허브 토큰
+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
